@@ -1,0 +1,18 @@
+<mat-card class="mat-elevation-z12">
+    <h1 class="detail_header">Task Detail</h1>
+    <button mat-icon-button class="visibility-button" (click)="goToHome()">
+        <mat-icon>home</mat-icon>
+    </button>
+    <p class="task_duedate"><span class="detail-title">Due Date:</span> <span class="duedate_detail"> {{quote.DueDate | date: 'short'}}</span></p>
+    <!-- <p class="task_duedate"><span class="detail-title">Due Date:</span> <span class="duedate_detail"> {{quote.DueDate.replace('T', ' ')}}</span></p> -->
+
+    <div class="detail_container">
+        <p class="detail-row"><span class="detail-title">Task:</span> <span class="detail-info" style="font-size: 1.5rem;">{{quote.Task}}</span></p>
+        <p class="detail-row"><span class="detail-title">Quote#:</span> <span class="detail-info">{{id}}</span></p>
+        <p class="detail-row"><span class="detail-title">Quote Type:</span> <span class="detail-info">{{quote.QuoteType}}</span></p>
+        <p class="detail-row"><span class="detail-title">Contact:</span> <span class="detail-info">{{quote.Contact}}</span></p>
+        <p class="detail-row"><span class="detail-title">Task Type:</span> <span class="detail-info">{{quote.TaskType}}</span></p>
+    </div>
+
+
+</mat-card>

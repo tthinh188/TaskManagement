@@ -1,0 +1,40 @@
+<mat-card class="mat-elevation-z12">
+    <form class="login" (ngSubmit)="handleSubmit(form)" #form="ngForm">
+        <mat-icon>lock</mat-icon>
+        <h1 *ngIf="isLogin" class="login_title">Login</h1>
+        <h1 *ngIf="!isLogin" class="login_title">Register</h1>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input 
+                matInput 
+                type="email" 
+                name="Email" 
+                ngModel 
+                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+                required
+            >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="Password" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!isLogin" appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" name="ConfirmPassword" ngModel required>
+        </mat-form-field>
+
+        <p class="form_error" *ngIf="errorList.length">
+            <span *ngFor="let err of errorList; let last = last"
+            >{{ err }}<span *ngIf="!last">, </span></span>
+        </p>
+
+        <button *ngIf="isLogin" mat-raised-button color="primary" type="submit">SIGN IN</button>
+        <button *ngIf="!isLogin" mat-raised-button color="primary" type="submit">SIGN UP</button>
+        
+    </form>
+    <button *ngIf="isLogin" mat-button (click)="switchMode()" color='warn'>DON'T HAVE AN ACCOUNT? SIGN UP</button>
+    <button *ngIf="!isLogin" mat-button (click)="switchMode()" color='warn'>ALREADY HAVE AN ACCOUNT? SIGN IN</button>
+
+</mat-card>

@@ -1,0 +1,11 @@
+<mat-toolbar color='primary' class="header">
+    <span class="header_left" (click)="goToHome()">Task</span>
+    <nav class="header_right">
+        <ul>
+            <li><a [routerLink]="''">Home</a></li>
+            <li><a [routerLink]="'addTask'">AddTask</a></li>
+            <li *ngIf="!access_token"><a [routerLink]="'login'">Login</a></li>
+            <li *ngIf="access_token" (click)="logout()"><a href="/">Logout</a></li>
+        </ul>
+    </nav>
+</mat-toolbar>

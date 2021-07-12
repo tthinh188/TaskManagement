@@ -1,0 +1,117 @@
+.mat-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 20px;
+    background-color: #3f51b5;
+    color: white;
+}
+
+.detail_header {
+    text-align: center;
+}
+
+.detail_container {
+    /* background-color: rgb(129, 233, 252); */
+    /* background-color: blue;
+    color: white; */
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+
+.detail-title {
+    flex: 0.2;
+    font-weight: 800;
+}
+
+.detail-info {
+    flex: 0.8;
+    text-align: left;
+}
+
+.task_duedate {
+    text-align: center;
+    color: orange;
+}
+
+button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+    transition: 0.5s linear;
+}
+
+@media (max-width: 1330px) {
+    .mat-card {
+        width: 40%;
+    }
+}
+
+@media (max-width: 868px) {
+    .mat-card {
+        width: 50%;
+    }
+}
+
+@media (max-width: 568px) {
+    .mat-card {
+        width: 80%;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mat-card {
+        animation: changBackgroundColor 5s;
+    }
+}
+
+@keyframes changColor {
+    0% {
+        color: red;
+    }
+
+    25% {
+        color: royalblue;
+    }
+
+    75% {
+        color: purple;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
+@keyframes changBackgroundColor {
+    /* 0% {
+        background-color: #3f51b5;
+        color: white;
+    } */
+
+    0% {
+        background-color: whitesmoke;
+        color: black
+    }
+
+    100% {
+        background-color: #3f51b5;
+        color: white;
+    }
+
+}
+

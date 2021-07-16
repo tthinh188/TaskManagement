@@ -1,5 +1,5 @@
 table {
-    min-width: 1680px;
+    width: 1080px;
 }
 
 .task {
@@ -113,6 +113,35 @@ table {
     text-decoration: none;
     transition: 0.5s;
     color: red;
+}
+
+.header_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgray;
+}
+
+.header_title {
+    color: #3f51b5;
+    font-weight: 700;
+    padding: 0 50px;
+    font-size: 1.2rem;
+}
+
+.header_feature {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: white;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #3f51b5;
+}
+
+.header_feature:hover {
+    background-color: rgba(63, 81, 181, 0.8);
+    transition: 0.5s;
 }
 
 /* .edit_container {

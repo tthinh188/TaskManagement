@@ -32,6 +32,10 @@
     width: 100%;
 }
 
+.task_description {
+    height: 150px;
+}
+
 .error {
     color: red;
 }

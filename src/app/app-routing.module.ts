@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'addTask', component: AddTaskComponent, canActivate: [AuthGaurdService], canDeactivate: [DeactivateGaurdService] },
   { path: 'details/:id', component: DetailsComponent },
+  { path: '**', redirectTo: '/' }
 
 ];
 

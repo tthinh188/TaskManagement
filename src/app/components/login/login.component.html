@@ -25,16 +25,19 @@
             <input matInput type="password" name="ConfirmPassword" ngModel required>
         </mat-form-field>
 
-        <p class="form_error" *ngIf="errorList.length">
-            <span *ngFor="let err of errorList; let last = last"
-            >{{ err }}<span *ngIf="!last">, </span></span>
-        </p>
+        <div class="form_error" *ngFor="let err of errorList[0]">
+            <p>{{err}}</p>
+        </div>
+
+        <div class="form_error" *ngIf="error">
+            <p>{{error}}</p>
+        </div>
 
         <button *ngIf="isLogin" mat-raised-button color="primary" type="submit">SIGN IN</button>
         <button *ngIf="!isLogin" mat-raised-button color="primary" type="submit">SIGN UP</button>
         
     </form>
-    <button *ngIf="isLogin" mat-button (click)="switchMode()" color='warn'>DON'T HAVE AN ACCOUNT? SIGN UP</button>
-    <button *ngIf="!isLogin" mat-button (click)="switchMode()" color='warn'>ALREADY HAVE AN ACCOUNT? SIGN IN</button>
+    <button *ngIf="isLogin" mat-button (click)="switchMode()" color='primary'>DON'T HAVE AN ACCOUNT? SIGN UP</button>
+    <button *ngIf="!isLogin" mat-button (click)="switchMode()" color='primary'>ALREADY HAVE AN ACCOUNT? SIGN IN</button>
 
 </mat-card>

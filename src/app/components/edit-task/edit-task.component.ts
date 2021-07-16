@@ -9,7 +9,6 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./edit-task.component.css']
 })
 export class EditTaskComponent implements OnInit {
-  access_token = localStorage.getItem('access_token') || '';
 
   error!: string;
   quote!: Quote;
@@ -35,25 +34,24 @@ export class EditTaskComponent implements OnInit {
         DueDate: new Date(form.value.DueDate).toISOString().slice(0, 19),
         TaskType: form.value.TaskType,
       }
-      if (this.access_token) {
-        this.appService.updateQuote(this.access_token, this.quote)
-          .subscribe(res => {
-            this.appService.getAllQuote(this.access_token)
-              .subscribe(res => {
-                this.quotes = res;
-              },
-                err => {
-                  console.log(err);
-                }, () => {
-                  this.quotesChange.emit(this.quotes);
-                });
-          }, err => {
-            console.log(err);
-          }, () => {
-            this.editing = false;
-            this.error = '';
-          });
-      }
+      this.appService.updateQuote(this.quote)
+        .subscribe(res => {
+          this.appService.getAllQuote()
+            .subscribe(res => {
+              this.quotes = res;
+            },
+              err => {
+                console.log(err);
+              }, () => {
+                this.quotesChange.emit(this.quotes);
+              });
+        }, err => {
+          console.log(err);
+        }, () => {
+          this.editing = false;
+          this.error = '';
+        });
+
     } else {
       this.error = 'Please fill the required fields'
     }
@@ -64,7 +62,7 @@ export class EditTaskComponent implements OnInit {
   }
 
   goToEdit(ID: number): void {
-    this.appService.getQuote(this.access_token, ID).subscribe(q => {
+    this.appService.getQuote(ID).subscribe(q => {
       this.quote = q;
       this.editing = true;
     }, err => {

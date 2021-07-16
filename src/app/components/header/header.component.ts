@@ -16,7 +16,12 @@ export class HeaderComponent implements OnInit {
 
   goToHome():void {
     this.router.navigate(['/'])
-    // window.location.href = "/"
+
+    // this.router.navigate(['/asd']).catch(err => {
+    //   this.router.navigate(['/'])
+    //   console.log(err);
+    // }) 
+
   }
 
   logout():void {

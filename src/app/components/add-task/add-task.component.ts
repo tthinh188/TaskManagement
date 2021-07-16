@@ -13,7 +13,6 @@ export class AddTaskComponent implements OnInit, CanLeave {
   quote!: Quote
   error: string = '';
   constructor(private appService: AppService) { }
-  access_token = localStorage.getItem('access_token');
 
   ngOnInit(): void {
   }
@@ -29,15 +28,13 @@ export class AddTaskComponent implements OnInit, CanLeave {
         TaskType: form.value.TaskType,
       }
 
-      if (this.access_token) {
-        this.appService.addQuote(this.access_token, this.quote)
-          .subscribe(res => {
-            this.error = '';
-            window.location.href = '/';
-          }, err => {
-            console.log(err)
-          });
-      }
+      this.appService.addQuote(this.quote)
+        .subscribe(res => {
+          this.error = '';
+          window.location.href = '/';
+        }, err => {
+          console.log(err)
+        });
     }
     else {
       this.error = 'Please fill the required fields'

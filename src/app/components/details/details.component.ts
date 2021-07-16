@@ -12,14 +12,13 @@ import { Quote } from 'src/app/module';
 export class DetailsComponent implements OnInit {
   id!: number;
   routeSub!: Subscription;
-  access_token = localStorage.getItem('access_token') || '';
   quote!: Quote;
 
   constructor(private activatedRoute: ActivatedRoute, private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe(params => {this.id = params['id']})
-    this.appService.getQuote(this.access_token, this.id).subscribe(
+    this.appService.getQuote(this.id).subscribe(
       res => {
         this.quote = res;
       },

@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit {
   constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.access_token) {
+      this.router.navigate(['login']);
+    }
     this.fetchAllQuotes();
   }
 
@@ -84,7 +87,7 @@ export class HomeComponent implements OnInit {
 
   handleDelete(ID: number): void {
     if (this.access_token) {
-      this.appService.removeQuote(this.access_token, ID)
+      this.appService.removeQuote(ID)
         .subscribe(res => {
           this.fetchAllQuotes();
         }, err => {
@@ -103,16 +106,16 @@ export class HomeComponent implements OnInit {
 
   fetchAllQuotes(): void {
     if (this.access_token) {
-      this.appService.getAllQuote(this.access_token)
-        .subscribe(res => {
-          this.quotes = res;
-        },
-          err => {
-            console.log(err);
-          }, () => {
-            this.dataSource = new MatTableDataSource<Quote>(this.quotes);
-            this.dataSource.paginator = this.paginator;
-          });
+      this.appService.getAllQuote().subscribe(res => {
+        this.quotes = res;
+      },
+        err => {
+          console.log(err);
+        }, () => {
+          this.dataSource = new MatTableDataSource<Quote>(this.quotes);
+          this.dataSource.paginator = this.paginator;
+          this.paginator._intl.itemsPerPageLabel = "Show";
+        });
     }
   }
 

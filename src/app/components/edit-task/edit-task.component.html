@@ -6,19 +6,28 @@
 
         <form class="editForm" (ngSubmit)="handleEdit(form)" #form="ngForm">
             <h2>Edit Task</h2>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Status</mat-label>
+                <select matNativeControl>
+                    <option value="Open">Open</option>
+                    <option value="Close">Close</option>
+                </select>
+            </mat-form-field>
+
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Quote Type</mat-label>
                 <input matInput type="text" name="QuoteType" [(ngModel)]="quote.QuoteType" required>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Contact</mat-label>
-                <input matInput type="text" name="Contact" [(ngModel)]="quote.Contact" required>
+                <mat-label>Task Type</mat-label>
+                <input matInput type="text" name="TaskType" [(ngModel)]="quote.TaskType" required>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Task</mat-label>
-                <input matInput type="text" name="Task" [(ngModel)]="quote.Task" required>
+                <mat-label>Contact</mat-label>
+                <input matInput type="text" name="Contact" [(ngModel)]="quote.Contact" required>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="fill">
@@ -30,9 +39,11 @@
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Task Type</mat-label>
-                <input matInput type="text" name="TaskType" [(ngModel)]="quote.TaskType" required>
-            </mat-form-field>
+                <mat-label>Task</mat-label>
+                <textarea class="task_description" matInput type="text" name="Task" [(ngModel)]="quote.Task" required></textarea>
+                <!-- <input class="task_description" matInput type="text" name="Task" [(ngModel)]="quote.Task" required> -->
+            </mat-form-field>   
+
             <p class="error" *ngIf='error'>{{error}}</p>
 
             <button class="full-width" mat-raised-button color="primary" type="submit">EDIT</button>
